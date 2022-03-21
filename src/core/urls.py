@@ -1,6 +1,6 @@
 from django.urls import path
-from core.views import AtheltsAPIView
+from core.views import AthletsAPIView
 
 urlpatterns = [
-    path("athlets", AtheltsAPIView.as_view())
+    path("athlets", AthletsAPIView.as_view())
 ]
