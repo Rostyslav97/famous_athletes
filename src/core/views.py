@@ -1,8 +1,12 @@
-from urllib import request
 from rest_framework.views import APIView
+from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 from core.models import Athlet
 from core.serializers import AthletSerializer
+
+class AthletsListCreateAPI(ListCreateAPIView):
+    queryset = Athlet.objects.all()
+    serializer_class = AthletSerializer
 
 class AthletsAPIView(APIView):
     def get(self, request):

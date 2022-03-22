@@ -1,7 +1,7 @@
 from django.urls import path
-from core.views import AthletsAPIView
+from core.views import AthletsListCreateAPI
 
 urlpatterns = [
-    path("athlets/", AthletsAPIView.as_view()),
-    path("athlet/<int:pk>/", AthletsAPIView.as_view())
+    path("athlets/", AthletsListCreateAPI.as_view()),
+    path("athlet/<int:pk>/", AthletsListCreateAPI.as_view())
 ]
