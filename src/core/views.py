@@ -1,15 +1,8 @@
-from rest_framework.generics import ListCreateAPIView, UpdateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.viewsets import ModelViewSet
 from core.models import Athlet
 from core.serializers import AthletSerializer
 
-class AthletsListCreateAPI(ListCreateAPIView):
-    queryset = Athlet.objects.all()
-    serializer_class = AthletSerializer
 
-class AthletsUpdateAPI(UpdateAPIView):
+class AthletViewSet(ModelViewSet):
     queryset = Athlet.objects.all()
-    serializer_class = AthletSerializer
-
-class AthletsRetrieveUpdateDestroyAPI(RetrieveUpdateDestroyAPIView):
-    queryset = Athlet.objects.all()
-    serializer_class = AthletSerializer
+    serializer_class = AthletSerializer 
