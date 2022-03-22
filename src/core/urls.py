@@ -1,7 +1,8 @@
 from django.urls import path
-from core.views import AthletsListCreateAPI, AthletsAPIView
+from core.views import AthletsListCreateAPI, AthletsUpdateAPI, AthletsRetrieveUpdateDestroyAPI
 
 urlpatterns = [
-    path("athlets/", AthletsListCreateAPI.as_view()),
-    path("athlet/<int:pk>/", AthletsAPIView.as_view())
+    path("athletlist/", AthletsListCreateAPI.as_view()),
+    path("athletlist/<int:pk>/", AthletsUpdateAPI.as_view()),
+    path("athletdetail/<int:pk>/", AthletsRetrieveUpdateDestroyAPI.as_view()),
 ]
