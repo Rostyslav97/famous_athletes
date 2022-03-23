@@ -1,26 +1,23 @@
-from rest_framework import mixins
-from rest_framework.viewsets import GenericViewSet
-from rest_framework.decorators import action
-from core.models import Athlet, Category
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, RetrieveDestroyAPIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from core.models import Athlet
 from core.serializers import AthletSerializer
-from rest_framework.response import Response
+from core.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 
-class AthletViewSet(mixins.CreateModelMixin,
-                   mixins.RetrieveModelMixin,
-                   mixins.UpdateModelMixin,
-                   mixins.DestroyModelMixin,
-                   mixins.ListModelMixin,
-                   GenericViewSet):
-    # queryset = Athlet.objects.all()
-    serializer_class = AthletSerializer 
 
-    def get_queryset(self):
-        pk = self.kwargs.get("pk")
-        if not pk:
-            return Athlet.objects.all()[:3]
-        return Athlet.objects.filter(pk=pk)
+class AthletsListCreateAPI(ListCreateAPIView):
+    queryset = Athlet.objects.all()
+    serializer_class = AthletSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly, )
 
-    @action(methods=['get'], detail=True)
-    def category(self, request, pk=None):
-        cats = Category.objects.get(pk=pk)
-        return Response({'cats': cats.name})
+
+class AthletsRetrieveUpdateAPI(RetrieveUpdateAPIView):
+    queryset = Athlet.objects.all()
+    serializer_class = AthletSerializer
+    permission_classes = (IsOwnerOrReadOnly, ) 
+
+
+class AthletsRetrieveDestroyAPI(RetrieveDestroyAPIView):
+    queryset = Athlet.objects.all()
+    serializer_class = AthletSerializer
+    permission_classes = (IsAdminOrReadOnly, ) 
