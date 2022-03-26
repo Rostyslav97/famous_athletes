@@ -12,7 +12,7 @@ Install environment
 # Create virtual environment
 pipenv install
 
-# pipenv install --dev
+#  pipenv install --dev
 pipenv shell
 ```
 
