@@ -24,3 +24,4 @@ python src/manage.py migrate
 # Run server
 python src/manage.py runserver
 ```
+
