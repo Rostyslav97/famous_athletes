@@ -2,7 +2,7 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, Re
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from core.models import Athlet
 from core.serializers import AthletSerializer
-from core.permissions import IsAdminOrReadOnly
+from core.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.pagination import PageNumberPagination
 
@@ -23,7 +23,7 @@ class AthletsListCreateAPI(ListCreateAPIView):
 class AthletsRetrieveUpdateAPI(RetrieveUpdateAPIView):
     queryset = Athlet.objects.all()
     serializer_class = AthletSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsOwnerOrReadOnly, )
     # authentication_classes = (TokenAuthentication, )
 
 
