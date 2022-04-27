@@ -9,5 +9,5 @@ class IsAdminOrReadOnly(BasePermission):
 class IsOwnerOrReadOnly(BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in SAFE_METHODS:
-            return True
+            return True # предоставляем права доступа для всех 
         return obj.user == request.user # если user из базы данных == user, который делает запрос, тогда даем доступ
