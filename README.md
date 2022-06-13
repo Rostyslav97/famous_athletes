@@ -16,7 +16,7 @@ pipenv install
 pipenv shell
 ```
 
-Run django server
+## Run django server
 ```bash
 # Run migrations only on a project setup
 python src/manage.py migrate
@@ -24,3 +24,8 @@ python src/manage.py migrate
 # Run server
 python src/manage.py runserver
 ```
+
+## Formatting code
+```bash
+# Black
+python -m black
