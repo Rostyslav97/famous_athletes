@@ -29,4 +29,3 @@ python src/manage.py runserver
 ```bash
 # Black
 python -m black
-
