@@ -28,4 +28,4 @@ python src/manage.py runserver
 ## Formatting code
 ```bash
 # Black
-python -m black
+black .
